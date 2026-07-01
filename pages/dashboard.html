@@ -67,8 +67,8 @@
         </div>
 
         <div class="flex flex-col gap-3 md:col-span-3 sm:flex-row sm:justify-end">
-          <button class="h-11 rounded-lg border border-slate-300 px-5 text-sm font-semibold text-slate-700 transition hover:bg-slate-100" type="reset">Reset</button>
-          <button class="h-11 rounded-lg bg-blue-600 px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-100" type="submit">Simpan Transaksi</button>
+          <button id="resetTransaction" class="h-11 rounded-lg border border-slate-300 px-5 text-sm font-semibold text-slate-700 transition hover:bg-slate-100" type="reset">Reset</button>
+          <button id="submitTransaction" class="h-11 rounded-lg bg-blue-600 px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-100" type="submit">Simpan Transaksi</button>
         </div>
       </form>
     </section>
@@ -86,11 +86,12 @@
               <th class="px-5 py-3 font-semibold">Uang Masuk</th>
               <th class="px-5 py-3 font-semibold">Uang Keluar</th>
               <th class="px-5 py-3 font-semibold">Keterangan</th>
+              <th class="px-5 py-3 font-semibold">Aksi</th>
             </tr>
           </thead>
           <tbody id="transactionBody">
             <tr>
-              <td class="px-5 py-6 text-slate-500" colspan="4">Belum ada data transaksi.</td>
+              <td class="px-5 py-6 text-slate-500" colspan="5">Belum ada data transaksi.</td>
             </tr>
           </tbody>
         </table>
