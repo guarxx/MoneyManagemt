@@ -1,5 +1,6 @@
 const STORAGE_KEY = "myDashboard.transactions";
 
+// Ambil elemen HTML yang dipakai oleh dashboard.
 const form = document.querySelector("#transactionForm");
 const incomeInput = document.querySelector("#uangMasuk");
 const expenseInput = document.querySelector("#uangKeluar");
@@ -13,6 +14,7 @@ const submitButton = document.querySelector("#submitTransaction");
 let transactions = loadTransactions();
 let editingId = null;
 
+// Simpan dan ambil transaksi dari localStorage.
 function loadTransactions() {
   const savedTransactions = localStorage.getItem(STORAGE_KEY);
 
@@ -31,6 +33,7 @@ function saveTransactions() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(transactions));
 }
 
+// Helper untuk angka, rupiah, tanggal, dan label transaksi.
 function toNumber(value) {
   return Number(value) || 0;
 }
@@ -77,6 +80,7 @@ function setTodayAsDefault() {
   dateInput.value = today.toISOString().slice(0, 10);
 }
 
+// Render ringkasan saldo dan tabel transaksi.
 function renderSummary() {
   const totalIncome = transactions.reduce((total, transaction) => total + transaction.income, 0);
   const totalExpense = transactions.reduce((total, transaction) => total + transaction.expense, 0);
@@ -132,6 +136,7 @@ function renderTable() {
     .join("");
 }
 
+// Mode edit: isi form dari data lama, lalu update saat submit.
 function updateSubmitButton() {
   submitButton.textContent = editingId === null ? "Simpan Transaksi" : "Update Transaksi";
 }
@@ -174,6 +179,7 @@ function editTransaction(id) {
   incomeInput.focus();
 }
 
+// Tangani tombol Edit/Hapus yang dibuat lewat innerHTML.
 function handleTableAction(event) {
   const button = event.target.closest("button[data-action]");
 
@@ -198,6 +204,7 @@ function renderDashboard() {
   renderTable();
 }
 
+// Submit form dipakai untuk tambah transaksi baru atau update transaksi lama.
 function handleSubmit(event) {
   event.preventDefault();
 
@@ -254,6 +261,7 @@ function handleReset() {
   }, 0);
 }
 
+// Jalankan logic hanya kalau elemen dashboard tersedia.
 if (
   form &&
   incomeInput &&
